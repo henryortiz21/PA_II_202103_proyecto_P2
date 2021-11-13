@@ -13,17 +13,15 @@ import com.vaadin.flow.router.RouteAlias;
 @PageTitle("Inicio")
 @Route(value = "inicio", layout = MainLayout.class)
 @RouteAlias(value = "", layout = MainLayout.class)
-
 public class InicioView extends HorizontalLayout {
 
 
     public InicioView() {
         this.getElement().getStyle().set("height","99%");
-        this.getElement().getStyle().set("background-image" , "url('https://blogs.iadb.org/integracion-comercio/wp-content/uploads/sites/14/2020/06/Aduanas.jpg')" );
+        this.getElement().getStyle().set("background-image" ,
+                "url('https://blogs.iadb.org/integracion-comercio/wp-content/uploads/sites/14/2020/06/Aduanas.jpg')" );
         setMargin(false);
         add(labels());
-//        add(imagenes());
-
     }
 
     private Component labels() {

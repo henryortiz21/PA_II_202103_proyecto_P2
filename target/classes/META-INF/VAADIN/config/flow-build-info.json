@@ -1,9 +1,9 @@
 {
   "compatibilityMode": false,
   "productionMode": false,
-  "npmFolder": "C:\\Users\\henry\\Desktop\\Clases universidad\\Avanzada II\\P2\\PA_II_202103_proyecto_P2",
-  "generatedFolder": "C:\\Users\\henry\\Desktop\\Clases universidad\\Avanzada II\\P2\\PA_II_202103_proyecto_P2\\target\\frontend",
-  "frontendFolder": "C:\\Users\\henry\\Desktop\\Clases universidad\\Avanzada II\\P2\\PA_II_202103_proyecto_P2\\frontend",
+  "npmFolder": "c:\\Users\\henry\\Desktop\\Clases universidad\\Avanzada II\\P2\\PA_II_202103_proyecto_P2",
+  "generatedFolder": "c:\\Users\\henry\\Desktop\\Clases universidad\\Avanzada II\\P2\\PA_II_202103_proyecto_P2\\target\\frontend",
+  "frontendFolder": "c:\\Users\\henry\\Desktop\\Clases universidad\\Avanzada II\\P2\\PA_II_202103_proyecto_P2\\frontend",
   "pnpm.enable": false,
   "require.home.node": false
 }
