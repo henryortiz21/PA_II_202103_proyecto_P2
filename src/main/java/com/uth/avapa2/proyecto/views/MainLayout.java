@@ -90,6 +90,7 @@ public class MainLayout extends AppLayout {
 
   private Component createHeaderContent() {
     DrawerToggle toggle = new DrawerToggle();
+    toggle.getStyle().set("border-radius","0px");
     toggle.addClassName("text-secondary");
     toggle.addThemeVariants(ButtonVariant.LUMO_CONTRAST);
     toggle.getElement().setAttribute("aria-label", "Menu toggle");
@@ -175,6 +176,7 @@ public class MainLayout extends AppLayout {
     for (MenuItemInfo menuItemInfo : menuItems) {
       links.add(createLink(menuItemInfo));
     }
+
     return links;
   }
 
@@ -193,6 +195,7 @@ public class MainLayout extends AppLayout {
     text.addClassNames("font-medium", "text-s");
 
     link.add(icon, text);
+
     return link;
   }
 

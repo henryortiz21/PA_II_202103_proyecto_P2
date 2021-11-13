@@ -8,6 +8,7 @@ import com.uth.avapa2.proyecto.data.AbstractEntity;
 public class Aduana extends AbstractEntity {
 
   private String nombre;
+  private String image;
   private String ubicacion;
   private String via_acceso;
   private String categoria;
@@ -20,6 +21,14 @@ public class Aduana extends AbstractEntity {
 
   public void setNombre(String nombre) {
     this.nombre = nombre;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
   }
 
   public String getUbicacion() {

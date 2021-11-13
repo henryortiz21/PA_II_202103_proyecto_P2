@@ -3,13 +3,12 @@ package com.uth.avapa2.proyecto.views.listadeaduanas;
 import java.util.Arrays;
 import java.util.List;
 
+import com.uth.avapa2.proyecto.data.entity.Aduana;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.AfterNavigationEvent;
@@ -22,138 +21,88 @@ import com.uth.avapa2.proyecto.views.MainLayout;
 @Route(value = "aduanas", layout = MainLayout.class)
 public class ListadeaduanasView extends Div implements AfterNavigationObserver {
 
-    Grid<Person> grid = new Grid<>();
+  Grid<Aduana> grid = new Grid<>();
 
-    public ListadeaduanasView() {
-        addClassName("listadeaduanas-view");
-        setSizeFull();
-        grid.setHeight("100%");
-        grid.addThemeVariants(GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_NO_ROW_BORDERS);
-        grid.addComponentColumn(person -> createCard(person));
-        add(grid);
-    }
+  public ListadeaduanasView() {
+    addClassName("listadeaduanas-view");
+    setSizeFull();
+    grid.setHeight("100%");
+    grid.addThemeVariants(GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_NO_ROW_BORDERS);
+    grid.addComponentColumn(aduana -> createCard(aduana));
+    add(grid);
+  }
 
-    private HorizontalLayout createCard(Person person) {
-        HorizontalLayout card = new HorizontalLayout();
-        card.addClassName("card");
-        card.setSpacing(false);
-        card.getThemeList().add("spacing-s");
+  private HorizontalLayout createCard(Aduana aduana) {
+    HorizontalLayout card = new HorizontalLayout();
+    card.addClassName("card");
+    card.setSpacing(false);
+    card.getThemeList().add("spacing-s");
 
-        Image image = new Image();
-        image.setHeight("100%");
-        image.setSrc(person.getImage());
-        VerticalLayout description = new VerticalLayout();
-        description.addClassName("description");
-        description.setSpacing(false);
-        description.setPadding(false);
+    Image image = new Image();
+    image.setHeight("100%");
+    image.setSrc(aduana.getImage());
+    VerticalLayout ubicacion = new VerticalLayout();
+    ubicacion.addClassName("ubicacion");
+    ubicacion.setSpacing(false);
+    ubicacion.setPadding(false);
 
-        HorizontalLayout header = new HorizontalLayout();
-        header.addClassName("header");
-        header.setSpacing(false);
-        header.getThemeList().add("spacing-s");
+    HorizontalLayout header = new HorizontalLayout();
+    header.addClassName("header");
+    header.setSpacing(false);
+    header.getThemeList().add("spacing-s");
 
-        Span name = new Span(person.getName());
-        name.addClassName("name");
-        Span date = new Span(person.getDate());
-        date.addClassName("date");
-        header.add(name, date);
+    Span name = new Span(aduana.getNombre());
+    name.addClassName("nombre");
+    Span date = new Span(aduana.getCategoria());
+    date.addClassName("categoria");
+    header.add(name, date);
 
-        Span post = new Span(person.getPost());
-        post.addClassName("post");
+    Span post = new Span(aduana.getTelefono());
+    post.addClassName("telefono");
 
-        HorizontalLayout actions = new HorizontalLayout();
-        actions.addClassName("actions");
-        actions.setSpacing(false);
-        actions.getThemeList().add("spacing-s");
+    HorizontalLayout actions = new HorizontalLayout();
+    actions.addClassName("actions");
+    actions.setSpacing(false);
+    actions.getThemeList().add("spacing-s");
 
-        Icon likeIcon = VaadinIcon.HEART.create();
-        likeIcon.addClassName("icon");
-        Span likes = new Span(person.getLikes());
-        likes.addClassName("likes");
-        Icon commentIcon = VaadinIcon.COMMENT.create();
-        commentIcon.addClassName("icon");
-        Span comments = new Span(person.getComments());
-        comments.addClassName("comments");
-        Icon shareIcon = VaadinIcon.CONNECT.create();
-        shareIcon.addClassName("icon");
-        Span shares = new Span(person.getShares());
-        shares.addClassName("shares");
+    ubicacion.add(header, post, actions);
+    card.add(image, ubicacion);
+    return card;
+  }
 
-        actions.add(likeIcon, likes, commentIcon, comments, shareIcon, shares);
+  @Override
+  public void afterNavigation(AfterNavigationEvent event) {
 
-        description.add(header, post, actions);
-        card.add(image, description);
-        return card;
-    }
+    List<Aduana> aduanas =
+        Arrays.asList(
+            createAduana(
+                "Toncontin",
+                "https://revistasumma.com/wp-content/uploads/2017/02/Palmerola.jpg",
+                "La Aduana de Toncontín está ubicada en la zona central del país; en Tegucigalpa, Departamento de Francisco Morazán.",
+                "Vía de acceso terrestre: Corredor Logístico 391 km",
+                "Aerea Terrestre",
+                "Zona Centro Sur",
+                "2550-4567"));
 
-    @Override
-    public void afterNavigation(AfterNavigationEvent event) {
+    grid.setItems(aduanas);
+  }
 
-        // Set some data when this view is displayed.
-        List<Person> persons = Arrays.asList( //
-                createPerson("https://randomuser.me/api/portraits/men/42.jpg", "John Smith", "May 8",
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/women/42.jpg", "Abagail Libbie", "May 3",
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/men/24.jpg", "Alberto Raya", "May 3",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/women/24.jpg", "Emmy Elsner", "Apr 22",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/men/76.jpg", "Alf Huncoot", "Apr 21",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/women/76.jpg", "Lidmila Vilensky", "Apr 17",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/men/94.jpg", "Jarrett Cawsey", "Apr 17",
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/women/94.jpg", "Tania Perfilyeva", "Mar 8",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/men/16.jpg", "Ivan Polo", "Mar 5",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/women/16.jpg", "Emelda Scandroot", "Mar 5",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/men/67.jpg", "Marcos Sá", "Mar 4",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
-                createPerson("https://randomuser.me/api/portraits/women/67.jpg", "Jacqueline Asong", "Mar 2",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20")
-
-        );
-
-        grid.setItems(persons);
-    }
-
-    private static Person createPerson(String image, String name, String date, String post, String likes,
-            String comments, String shares) {
-        Person p = new Person();
-        p.setImage(image);
-        p.setName(name);
-        p.setDate(date);
-        p.setPost(post);
-        p.setLikes(likes);
-        p.setComments(comments);
-        p.setShares(shares);
-
-        return p;
-    }
-
+  private static Aduana createAduana(
+      String nombre,
+      String image,
+      String ubicacion,
+      String via_acceso,
+      String categoria,
+      String zona,
+      String telefono) {
+    Aduana p = new Aduana();
+    p.setNombre(nombre);
+    p.setImage(image);
+    p.setUbicacion(ubicacion);
+    p.setVia_acceso(via_acceso);
+    p.setCategoria(categoria);
+    p.setZona(zona);
+    p.setTelefono(telefono);
+    return p;
+  }
 }

@@ -10,28 +10,28 @@ import java.util.Date;
 @Entity
 public class Producto extends AbstractEntity {
 
-  // private int id;
   private String codigo;
+  private String url_imagen;
   private String descripcion;
   private String estado;
   private LocalDate fecha_ingreso;
   private String marca;
   private String lugar_origen;
-  /*
-  public int getId() {
-    return id;
-  }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-   */
   public String getCodigo() {
     return codigo;
   }
 
   public void setCodigo(String codigo) {
     this.codigo = codigo;
+  }
+
+  public String getUrl_imagen() {
+    return url_imagen;
+  }
+
+  public void setUrl_imagen(String url_imagen) {
+    this.url_imagen = url_imagen;
   }
 
   public String getDescripcion() {
