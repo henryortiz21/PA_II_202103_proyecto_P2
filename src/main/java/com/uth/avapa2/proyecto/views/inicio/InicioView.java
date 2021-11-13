@@ -28,9 +28,7 @@ public class InicioView extends HorizontalLayout {
         VerticalLayout lver=new VerticalLayout();
         lver.setJustifyContentMode(JustifyContentMode.CENTER);
         lver.setAlignItems(Alignment.CENTER);
-        lver.getStyle().set("border", "1px solid #9E9E9E");
-        lver.getStyle().set("border-radius", "20px");
-        lver.setMargin(true);
+        lver.setMargin(false);
         H1 h1= new H1("ESTA ES LA PAGINA DE INICIO");
         h1.getStyle().set("border-radius", "20px");
         lver.setWidth("100%");
