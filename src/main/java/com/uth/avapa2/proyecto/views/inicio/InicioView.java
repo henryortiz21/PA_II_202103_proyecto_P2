@@ -43,9 +43,11 @@ public class InicioView extends HorizontalLayout {
         Slide s2 = new Slide(slideCustom("https://www.dropbox.com/s/xphfcq68eaw6jwc/slide1.jpg?dl=1"));
         Slide s3 = new Slide(slideCustom("https://www.dropbox.com/s/uhjjjejmkap4dtm/slide3.jpg?dl=1"));
         Slide s4 = new Slide(slideCustom("https://www.dropbox.com/s/n3sgqz0dr5hvgnb/slide4.jpg?dl=1"));
+        Slide s5 = new Slide(slideCustom("https://www.dropbox.com/s/4td0o1x94jiqtc1/slide5.jpg?dl=1"));
+        Slide s6 = new Slide(slideCustom("https://www.dropbox.com/s/xv74ozkp6gm7sbx/slide6.jpg?dl=1"));
 
         Carousel c =
-        new Carousel(s1, s2, s3, s4)
+        new Carousel(s1, s2, s3, s4, s5,s6)
             .withAutoProgress()
             .withSlideDuration(15)
             .withStartPosition(1)
