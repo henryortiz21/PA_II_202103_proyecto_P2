@@ -42,7 +42,7 @@ public class ListadeaduanasView extends Div implements AfterNavigationObserver {
     image.setHeight("100%");
     image.setSrc(aduana.getImage());
     VerticalLayout ubicacion = new VerticalLayout();
-    ubicacion.addClassName("ubicacion");
+    
     ubicacion.setSpacing(false);
     ubicacion.setPadding(false);
 
